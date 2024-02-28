@@ -1,13 +1,13 @@
 from django.urls import path
 from website.views import *
 
-
+app_name = 'website'
 
 urlpatterns = [
     
    
-    path('', website.index_view),
-    path('about', website.about_view),
-    path('contact', website.contact_view),
-    path('elements', website.elements_view),
-]
+    path('', index_view, name='indwx'),
+    path('about', about_view, name='about'),
+    path('contact', contact_view, name='contact'),
+    path('elements', elements_view, name='elements'),
+   ]
