@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+  <head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  
+    <!-- Author Meta -->
+    <meta name="author" content="colorlib" />
+    <!-- Meta Description -->
+    <meta name="description" content="" />
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="" />
+    <!-- meta character set -->
+    <meta charset="UTF-8" />
+    <!-- Site Title -->
+    <title>Document</title>
+
+    
+  </head>
+  <body>
+   
+    {{posts}}
+     {%for post in posts%}
+     {% if post.status == 1%}
+     <h1>{{post.title}}</h1>
+     <p>{{post.content}}</p>
+     <small>{{post.published_date}}</small>
+     {% endif %}
+     {% endfor %}
+  </body>
+</html>
