@@ -75,9 +75,12 @@
                 <ul>
                   <li>
                     <a href="{% url 'blog:index' %}">Blog Home</a>
+                    
                   </li>
                   <li>
-                    <a href="{% url 'blog:single' %}">Blog Single</a>
+                    {% for post in posts%}
+                    <a href="{% url 'blog:single' post.id %}">Blog Single: {{post.title}}</a>
+                    {% endfor %}
                   </li>
                 </ul>
               </li>

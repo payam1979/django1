@@ -7,8 +7,9 @@ urlpatterns = [
     
    
     path('', blog_view, name='index'),
-    path('single', single_view, name='single'),
-    path('test', test, name='test'),
+    path('single/<int:pid>', single_view, name='single'),
+    path('test/<int:pid>', test, name='test'),
+    #  path('detailed/<int:pid>', detailed_view, name='detailed'),
     
     
 ]
