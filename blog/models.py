@@ -31,7 +31,8 @@ class Post(models.Model):
         #verbose_name = 'پست'
         #verbose_name_plural = 'پست ها'
         
-        def __str__(self):
-            return self.title
+    def __str__(self):
+        return self.title
 
-
+    def snippets(self):
+        return self.content[ :100] + ...

@@ -26,31 +26,31 @@ def single_view(request, pid):
     post.save()
     post1 = list(posts)
     
-    print(post1)
+    
     
     
     for i in range(0,len(post1)):
         if post1[i].id == pid:
             if i == 0:
                 previous_post = post1[i+1]
-                print(previous_post.id)
+                #print(previous_post.id)
                 next_post = post1[0]
-                print(next_post.id) 
+                #print(next_post.id) 
             elif i == len(post1)-1:
                 next_post = post1[i-1]
-                print(next_post.id)
+                #print(next_post.id)
                 previous_post = post1[len(post1)-1]
-                print(previous_post.id)
+                #print(previous_post.id)
             else:
                 next_post = post1[i-1]
-                print(next_post.id)  
+                #print(next_post.id)  
                 previous_post = post1[i+1]
-                print(previous_post.id)
+                #print(previous_post.id)
                 
                 
    
             
-    print(next_post, post, previous_post)   
+    #print(next_post, post, previous_post)   
        
    
     
