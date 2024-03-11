@@ -11,9 +11,15 @@ from blog.models import *
 
 
 
-def blog_view(request):
+def blog_view(request, **kwargs):
    
     posts = Post.objects.exclude(published_date__gt=timezone.now()).exclude (status= 0)    
+    if kwargs.get('cat_name') != None:
+        posts = posts.filter(category__name=kwargs['cat_name'])
+    if kwargs.get('author_username') != None:
+        posts = posts.filter(author__username=kwargs['author_username'])
+    
+    
     context = {'posts': posts}
     return render(request, 'blog/blog-home.html', context)
 
@@ -64,12 +70,12 @@ def single_view(request, pid):
     
         
 
-def test(request, pid):
+def test(request):
     #post = Post.objects.get(id=pid)
     #posts = Post.objects.filter(status = 1)
-    post = get_object_or_404(Post,pk=pid)
-    context = {'post': post}
-    return render(request, 'blog/test.html', context)
+    #post = get_object_or_404(Post,pk=pid)
+    #context = {'post': post}
+    return render(request, 'blog/test.html')
 
 
 #def detailed_view(request, pid):
@@ -79,3 +85,8 @@ def test(request, pid):
     #  post.save()
     #  return render(request, 'blog/blog-detailed.html',context)
     
+def blog_category(request, cat_name):
+    posts = Post.objects.exclude(published_date__gt=timezone.now()).exclude (status= 0)
+    posts = posts.filter(category__name=cat_name)
+    context = {'posts': posts}
+    return render(request, 'blog/blog-home.html', context)

@@ -8,7 +8,9 @@ urlpatterns = [
    
     path('', blog_view, name='index'),
     path('single/<int:pid>', single_view, name='single'),
-    path('test/<int:pid>', test, name='test'),
+    path('category/<str:cat_name>', blog_view, name='category'),
+    path('author/<str:author_username>', blog_view, name='author'),
+    path('test', test, name='test'),
     #  path('detailed/<int:pid>', detailed_view, name='detailed'),
     
     
