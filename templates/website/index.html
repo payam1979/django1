@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load blog_tags %}
 {% block content %}
   <!-- start banner Area -->
   <section class="banner-area relative" id='payam' >
@@ -147,7 +148,7 @@
   <!-- End home-about Area -->
 
   <!-- Start blog Area -->
-  <section class="recent-blog-area section-gap">
+ <!-- <section class="recent-blog-area section-gap">
     <div class="container">
       <div class="row d-flex justify-content-center">
         <div class="menu-content pb-60 col-lg-9">
@@ -156,9 +157,14 @@
             <p>With the exception of Nietzsche, no other madman has contributed so much to human sanity as has.</p>
           </div>
         </div>
-      </div>
-      <div class="row">
+      </div> 
+
+       <div class="row">
         <div class="active-recent-blog-carusel">
+
+
+
+
           <div class="single-recent-blog-post item">
             <div class="thumb">
               <img class="img-fluid" src="{% static 'img/b1.jpg' %}" alt="" />
@@ -178,7 +184,9 @@
               <p>Acres of Diamonds… you’ve read the famous story, or at least had it related to you. A farmer.</p>
               <h6 class="date">31st January,2018</h6>
             </div>
-          </div>
+          </div> 
+
+          
           <div class="single-recent-blog-post item">
             <div class="thumb">
               <img class="img-fluid" src="{% static 'img/b2.jpg' %}" alt="" />
@@ -259,7 +267,7 @@
               <h6 class="date">31st January,2018</h6>
             </div>
           </div>
-          <div class="single-recent-blog-post item">
+           <div class="single-recent-blog-post item">
             <div class="thumb">
               <img class="img-fluid" src="{% static 'img/b3.jpg' %}" alt="" />
             </div>
@@ -278,10 +286,16 @@
               <p>Acres of Diamonds… you’ve read the famous story, or at least had it related to you. A farmer.</p>
               <h6 class="date">31st January,2018</h6>
             </div>
-          </div>
+          </div> 
+
+
+
         </div>
       </div>
-    </div>
-  </section>
+
+
+     </div>
+  </section> -->
+  {% latestposts %}
   <!-- End recent-blog Area -->
 {% endblock %}

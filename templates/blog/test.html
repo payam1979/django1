@@ -19,9 +19,9 @@
     <title>TEST</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet" />
-    <!--   
+    <!--      
         CSS
-        =============================================    -->
+        =============================================       -->
     <link rel="stylesheet" href="{% static 'css/linearicons.css' %}" />
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
@@ -36,13 +36,16 @@
     <h1>TEST</h1>
 
     <p>
-      Test:{% posts as totalposts %}
+      Test:
     </p>
-    {% for post in totalposts %}
-    <h4>{{post.title}}</h4>
-      <p>{{ post.content|snippet:50 }},{{ post.counted_view }}</p>
+    {% for post in posts %}
+      <h4>{{ post.title }}</h4>
+      <p>{{ post.content|snippet:50 }}</p>
+
+      <p>{{ post.author.get_full_name }}</p>
+      <p>{{ post.counted_view }}</p>
     {% endfor %}
 
-    {% popularpost %}
+    {% latestposts %}
   </body>
 </html>

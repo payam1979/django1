@@ -15,9 +15,9 @@ def numeric():
 def snippet(value, arg=20):
     return value[:arg]+'...'
 
-@register.inclusion_tag('popularposts.html')
-def popularposts():
-    posts = Post.objects.filter(status= 1).order_by('-counted_view')[:4]
+@register.inclusion_tag('blog/blog-latest.html')
+def latestposts():
+    posts = Post.objects.exclude(published_date__gt=timezone.now()).exclude (status= 0)[:6]
     return {'posts': posts}
 
 @register.inclusion_tag('blog/blog-popular.html')
@@ -27,7 +27,7 @@ def popularpost(arg=4):
 
 @register.inclusion_tag('blog/blog-post-categories.html')
 def categories():
-    posts=Post.objects.filter(status= 1)
+    posts = Post.objects.exclude(published_date__gt=timezone.now()).exclude (status= 0)
     categories=Category.objects.all()
     cat_dict={}
     for name in categories:

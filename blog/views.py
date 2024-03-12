@@ -5,6 +5,8 @@ from blog.models import Post
 from django.utils import timezone
 
 from blog.models import *
+
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
      
@@ -19,6 +21,16 @@ def blog_view(request, **kwargs):
     if kwargs.get('author_username') != None:
         posts = posts.filter(author__username=kwargs['author_username'])
     
+    posts = Paginator(posts,3)
+    
+    try:
+        page_number = request.GET.get('page')
+        posts = posts.get_page(page_number)
+    except PageNotAnInteger:
+        posts = posts.get_page(1)  
+    except EmptyPage:
+        posts = posts.get_page(1)
+        
     
     context = {'posts': posts}
     return render(request, 'blog/blog-home.html', context)
@@ -31,9 +43,6 @@ def single_view(request, pid):
     post.counted_view +=1
     post.save()
     post1 = list(posts)
-    
-    
-    
     
     for i in range(0,len(post1)):
         if post1[i].id == pid:
@@ -52,14 +61,8 @@ def single_view(request, pid):
                 #print(next_post.id)  
                 previous_post = post1[i+1]
                 #print(previous_post.id)
-                
-                
-   
-            
+                       
     #print(next_post, post, previous_post)   
-       
-   
-    
     context = {'post': post,
                'next': next_post,
                'previous': previous_post,}
@@ -67,15 +70,17 @@ def single_view(request, pid):
     return render(request, 'blog/blog-single.html', context)
 
 
-    
-        
 
-def test(request):
+def test(request, author_name=None):
     #post = Post.objects.get(id=pid)
     #posts = Post.objects.filter(status = 1)
     #post = get_object_or_404(Post,pk=pid)
     #context = {'post': post}
-    return render(request, 'blog/test.html')
+    posts = Post.objects.exclude(published_date__gt=timezone.now()).exclude (status= 0)
+    if author_name != None:
+        posts = posts.filter(author__first_name=author_name)
+    context = {'posts': posts}
+    return render(request, 'blog/test.html', context)
 
 
 #def detailed_view(request, pid):
@@ -88,5 +93,16 @@ def test(request):
 def blog_category(request, cat_name):
     posts = Post.objects.exclude(published_date__gt=timezone.now()).exclude (status= 0)
     posts = posts.filter(category__name=cat_name)
+    context = {'posts': posts}
+    return render(request, 'blog/blog-home.html', context)
+
+
+def blog_search(request):
+    posts = Post.objects.exclude(published_date__gt=timezone.now()).exclude (status= 0)
+    if request.method == 'GET':
+        if s:= request.GET.get('s'):
+            posts = posts.filter(content__contains=s)
+     
+    
     context = {'posts': posts}
     return render(request, 'blog/blog-home.html', context)
