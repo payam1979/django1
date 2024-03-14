@@ -23,11 +23,9 @@
               <div class="tags">
                 <ul>
                   {% for cat in post.category.all %}
-                  <li>
-                    
+                    <li>
                       <a href="{% url 'blog:category' cat_name=cat.name %}">{{ cat.name }}</a>
-                    
-                  </li>
+                    </li>
                   {% endfor %}
                 </ul>
               </div>

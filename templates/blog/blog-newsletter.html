@@ -2,6 +2,9 @@
 <div class="single-sidebar-widget newsletter-widget">
     <h4 class="newsletter-title">Newsletter</h4>
     <p>Here, I focus on a range of items and features that we use in life without giving them a second thought.</p>
+   
+    <form  action="{% url 'website:newsletter' %}" method="post" class="subscription relative">
+      {% csrf_token %}
     <div class="form-group d-flex flex-row">
       <div class="col-autos">
         <div class="input-group">
@@ -10,10 +13,18 @@
               <i class="fa fa-envelope" aria-hidden="true"></i>
             </div>
           </div>
-          <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'" />
+       
+            
+              
+              <input name="email" type="email" class="form-control"  placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'" required=""/>
+              <button type='submit' class="bbtns">Subcribe</button>
+           
+          
+          
         </div>
       </div>
-      <a href="#" class="bbtns">Subcribe</a>
+      
     </div>
+  </form>
     <p class="text-bottom">You can unsubscribe at any time</p>
   </div>
