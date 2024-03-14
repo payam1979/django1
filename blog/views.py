@@ -7,6 +7,7 @@ from django.utils import timezone
 from blog.models import *
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 # Create your views here.
 
      
