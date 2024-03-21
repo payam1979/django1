@@ -45,6 +45,9 @@
                 <li>
                   <a href="{% url 'accounts:logout' %}" >Logout</a>
                 </li>
+                <li>
+                  <a href="{% url 'accounts:change-password' %}" >Change password</a>
+                </li>
                 {% else %}
                 <li>
                   <a href="{% url 'accounts:login' %}">Login</a>

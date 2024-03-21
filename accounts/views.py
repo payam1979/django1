@@ -75,7 +75,12 @@ def signup_view(request):
         return render(request,'accounts/signup.html',context)
     else:
           return redirect('/')
-    
+   
+   
+class ChangePasswordView(PasswordChangeView):
+     template_name = 'accounts/change_password.html'
+     success_url = reverse_lazy('accounts:login')
+     form_class = ChangePasswordForm 
     
 class PasswordReset(PasswordResetView):
     template_name="accounts/password_reset_form.html"
@@ -91,3 +96,4 @@ class PasswordResetConfirm(PasswordResetConfirmView):
 
 class PasswordResetComplete(PasswordResetCompleteView):
     template_name="accounts/password_reset_complete.html"
+    
