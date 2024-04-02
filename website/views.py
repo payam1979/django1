@@ -40,18 +40,18 @@ def newsletter_view(request):
     
 
 def test(request):
-    if request.method == 'POST':
-        form = contactForm(request.POST)
-        if form.is_valid():
+   # if request.method == 'POST':
+       # form = contactForm(request.POST)
+        #if form.is_valid():
             #name = form.cleaned_data['name']
             #email = form.cleaned_data['email']
             #subject = form.cleaned_data['subject']
             #message = form.cleaned_data['message']
             #print(name, subject, email, message)
-            form.save()
-            return HttpResponse('done')
-        else:
-            return HttpResponse('error')
+          #  form.save()
+           # return HttpResponse('done')
+       # else:
+           # return HttpResponse('error')
             
         #print(name)
         #email = request.POST.get('email')
@@ -64,5 +64,6 @@ def test(request):
         #c.message = message
         #c.save()
         #print(c)
-    form = contactForm()
-    return render(request, 'website/test.html', {'form':form})
+   # form = contactForm()
+    #return render(request, 'website/test.html', {'form':form})
+    return render(request, 'website/test.html')
