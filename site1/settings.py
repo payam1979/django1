@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'compressor',
     
     'captcha',
     'robots',
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'website.apps.WebsiteConfig',
     'blog',
     'accounts',
+    
 ]
 
 
@@ -183,3 +185,12 @@ EMAIL_HOST_PASSWORD = 'otasdkgkcfsxtmio' #your password
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_ENABLED = True

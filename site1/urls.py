@@ -33,8 +33,8 @@ sitemaps = {
 
 
 urlpatterns = [
-    re_path(r"^\s*$",  views.test),
-    re_path(r".",  views.test),
+   # re_path(r"^\s*$",  views.test),
+   # re_path(r".",  views.test),
     path('admin/', admin.site.urls),
     path('', include('website.urls')),
     path('blog/', include('blog.urls')),
@@ -46,7 +46,7 @@ urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
     path('captcha/',include('captcha.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    re_path(r".",  views.test),
+   # re_path(r".",  views.test),
     ]
    
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
